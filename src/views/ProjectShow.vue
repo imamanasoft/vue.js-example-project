@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import LayoutDiv from '../LayoutDiv.vue';
+import LayoutDiv from '@/components/ui-components/LayoutDiv.vue'
 import Swal from 'sweetalert2'
 import { mapActions, mapState } from 'vuex'
 

@@ -4,12 +4,10 @@
 </template>
 
 <script setup>
-import HeaderComponent from './components/HeaderComponent.vue'
+import HeaderComponent from '@/components/header/HeaderComponent.vue'
 
 </script>
 
 <style>
-body {
-  margin: 50px;
-}
+
 </style>

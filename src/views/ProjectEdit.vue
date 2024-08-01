@@ -3,10 +3,7 @@
     <h2 class="text-center mt-5 mb-3">Edit Project</h2>
     <div class="card">
       <div class="card-header">
-        <router-link
-          class="btn btn-outline-info float-right"
-          to="/"
-        >
+        <router-link class="btn btn-outline-info float-right" to="/">
           View All Projects
         </router-link>
       </div>
@@ -29,7 +26,8 @@
               v-model="editedProject.description"
               class="form-control"
               rows="3"
-              name="description" />
+              name="description"
+            />
           </div>
           <button
             type="button"
@@ -46,44 +44,46 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState } from "vuex";
 
-import LayoutDiv from '../LayoutDiv.vue';
-import Swal from 'sweetalert2';
+import LayoutDiv from "@/components/ui-components/LayoutDiv.vue";
+import Swal from "sweetalert2";
 
 export default {
-  name: 'ProjectEdit',
+  name: "ProjectEdit",
   components: {
     LayoutDiv,
   },
   data() {
     return {
-      isSaving:false,
-      editedProject: this.project
+      isSaving: false,
+      editedProject: null,
     };
   },
+  watch: {
+    project(newVal) {
+      this.editedProject = newVal;
+    },
+  },
   computed: {
-    ...mapState('project', ['project']),
+    ...mapState("project", ["project"]),
   },
   created() {
     this.initProjectData();
   },
   methods: {
-    ...mapActions('project', [
-      'fetchProject',
-      'editProject'
-    ]),
-    async initProjectData () {
+    ...mapActions("project", ["fetchProject", "editProject"]),
+    async initProjectData() {
       const id = this.$route.params.id;
 
       try {
         await this.fetchProject({ id: id });
-      } catch(error) {
+      } catch (error) {
         await Swal.fire({
-          icon: 'error',
-          title: 'An Error Occured!',
+          icon: "error",
+          title: "An Error Occured!",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
 
         console.log(error);
@@ -93,13 +93,13 @@ export default {
       this.isSaving = true;
 
       try {
-        await this.editProject({ project: this.editedProject })
+        await this.editProject({ project: this.editedProject });
 
         await Swal.fire({
-          icon: 'success',
-          title: 'Project updated successfully!',
+          icon: "success",
+          title: "Project updated successfully!",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
 
         this.isSaving = false;
@@ -107,24 +107,22 @@ export default {
         this.project.description = "";
 
         // named route
-        this.$router.push({ name: 'projectList' });
+        this.$router.push({ name: "projectList" });
       } catch (error) {
         this.isSaving = false;
 
         await Swal.fire({
-          icon: 'error',
-          title: 'An Error Occured!',
+          icon: "error",
+          title: "An Error Occured!",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
 
-        console.log(error)
+        console.log(error);
       }
     },
   },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

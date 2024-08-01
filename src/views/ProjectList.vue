@@ -56,7 +56,7 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 
-import LayoutDiv from '../LayoutDiv.vue';
+import LayoutDiv from '@/components/ui-components/LayoutDiv.vue';
 import Swal from 'sweetalert2'
 
 export default {

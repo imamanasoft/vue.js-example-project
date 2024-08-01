@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import AlertComponent from '@/components/AlertComponent.vue'
+import AlertComponent from '@/components/alerts/AlertComponent.vue'
 
 export default {
   name: 'UsersList',

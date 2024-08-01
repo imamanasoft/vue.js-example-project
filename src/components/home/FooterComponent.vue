@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import AddAthlete from '@/components/AddAthlete.vue'
+import AddAthlete from '@/components/user/AddAthlete.vue'
 
 export default {
   name: 'FooterComponent',

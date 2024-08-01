@@ -1,25 +1,26 @@
 <template>
   <slot></slot>
-  <slot
-    name="header"
-    :first-name="'Anas'"
-    :last-name="'Imam'"
-  >
+  <slot name="header" :first-name="'Anas'" :last-name="'Imam'">
     Athlete Infos:
   </slot>
   <slot name="body">
     <form>
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Name">
+        <input type="text" class="form-control" id="name" placeholder="Name" />
       </div>
       <div class="form-group">
         <label for="sport">Sport</label>
-        <input type="text" class="form-control" id="sport" placeholder="Sport">
+        <input
+          type="text"
+          class="form-control"
+          id="sport"
+          placeholder="Sport"
+        />
       </div>
       <div class="form-group">
-        <label for="age">Sport</label>
-        <input type="text" class="form-control" id="age" placeholder="Age">
+        <label for="age">Age</label>
+        <input type="text" class="form-control" id="age" placeholder="Age" />
       </div>
     </form>
   </slot>
@@ -32,13 +33,11 @@
 
 <script>
 export default {
-  name: 'AddAthlete',
+  name: "AddAthlete",
   props: {
-    message: String
-  }
-}
+    message: String,
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

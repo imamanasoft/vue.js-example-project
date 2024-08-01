@@ -23,17 +23,15 @@
           <router-link class="navbar-brand nav-link" to="/">Projects</router-link>
         </li>
         <li class="nav-item dropdown">
-          <a
-            id="navbarDropdown"
-            class="nav-link dropdown-toggle"
-            :href="dropdownOptions.link"
+          <router-link 
+            id="navbarDropdown" 
+            class="nav-link dropdown-toggle" 
+            :to="dropdownOptions.link"
             role="button"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
-          >
-            {{ dropdownOptions.label }}
-          </a>
+          >{{ dropdownOptions.label }}</router-link>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <template
               v-for="item in dropdownOptions.items"
@@ -53,18 +51,32 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </div>
     </div>
+    <!---------------------------ChatGPT-------------------------------------------->
+    <router-link v-if="!isAuthenticated" class="navbar-brand nav-link" to="/login">Login</router-link>
+    <router-link v-if="!isAuthenticated" class="navbar-brand nav-link" to="/register">Register</router-link>
+    <router-link v-if="isAuthenticated" class="navbar-brand nav-link"to="/dashboard">Dashboard</router-link>
+    <button v-if="isAuthenticated" @click="logout">Logout</button>
+    <!---------------------------ChatGPT-------------------------------------------->
   </nav>
 </template>
 
-<script>
-export default {
-  name: 'NavbarComponent',
-  props: {
-    dropdownOptions: {
+<script setup>
+//ChatGPT
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
+defineProps({
+  dropdownOptions: {
       type: Object,
       required: true
     }
-  }
+})
+
+const store = useStore();
+const isAuthenticated = computed(() => store.state.user.isAuthenticated);
+
+const logout = () => {
+  store.dispatch('logout');
 }
 </script>
 

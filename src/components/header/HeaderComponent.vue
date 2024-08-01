@@ -1,24 +1,17 @@
 <template>
   <div>
     <NavbarComponent :dropdownOptions="dropdownOptions"/>
-    <h3>Mouse position is at: {{ x }}, {{ y }}</h3>
+    <MousePositionComponent />
   </div>
 </template>
 
 <script>
-import NavbarComponent from '@/components/NavbarComponent.vue'
-import { useMouse } from '@/composables/useMouse.js'
+import NavbarComponent from '@/components/header/NavbarComponent.vue'
+import MousePositionComponent from '@/components/header/MousePositionComponent.vue'
 
 export default {
   name: 'HeaderComponent',
-  components: { NavbarComponent },
-  setup() {
-    const { x, y } = useMouse();
-
-    return {
-      x, y
-    };
-  },
+  components: { NavbarComponent, MousePositionComponent },
   data() {
     return {
       dropdownOptions: {

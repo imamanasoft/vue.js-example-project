@@ -49,7 +49,7 @@
 <script>
 import { mapActions } from 'vuex'
 
-import LayoutDiv from '@/components/LayoutDiv.vue';
+import LayoutDiv from '@/components/ui-components/LayoutDiv.vue';
 import Swal from 'sweetalert2'
 
 export default {

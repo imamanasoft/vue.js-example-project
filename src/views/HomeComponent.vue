@@ -4,8 +4,8 @@
 </template>
 
 <script>
-import MainComponent from '@/components/MainComponent.vue'
-import FooterComponent from '@/components/FooterComponent.vue'
+import MainComponent from '@/components/home/MainComponent.vue'
+import FooterComponent from '@/components/home/FooterComponent.vue'
 
 export default {
   name: 'HomeComponent',
